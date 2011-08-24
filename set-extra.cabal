@@ -1,0 +1,14 @@
+Name:           set-extra
+Version:        1.0
+License:        BSD3
+License-File:	COPYING
+Author:         David Fox
+Category:       Unclassified
+Description:    Functions that could be added to Data.Set.
+Synopsis:       Functions that could be added to Data.Set.
+Maintainer:     David Fox <dsf@seereason.com>
+Homepage:       http://src.seereason.com/set-extra
+ghc-options:	-O2 -Wall -Werror
+Exposed-modules: Data.Set.Extra
+Build-Depends: base, containers
+Build-Type: Simple

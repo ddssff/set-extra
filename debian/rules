@@ -1,0 +1,8 @@
+#!/usr/bin/make -f
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/hlibrary.mk
+
+
+# How to install an extra file into the documentation package
+#binary-fixup/libghc-set-extra-doc::
+#	echo "Some informative text" > debian/libghc-set-extra-doc/usr/share/doc/libghc-set-extra-doc/AnExtraDocFile

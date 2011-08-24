@@ -1,0 +1,58 @@
+Source: haskell-set-extra
+Priority: extra
+Section: haskell
+Maintainer: David Fox <dsf@seereason.com>
+Build-Depends: debhelper (>= 7.0),
+               haskell-devscripts (>= 0.8),
+               cdbs,
+               ghc,
+               ghc-prof
+Build-Depends-Indep: ghc-doc
+Standards-Version: 3.9.1
+Homepage: http://src.seereason.com/set-extra
+
+Package: libghc-set-extra-dev
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${haskell:Depends},
+         ${misc:Depends}
+Recommends: ${haskell:Recommends}
+Suggests: ${haskell:Suggests}
+Provides: ${haskell:Provides}
+Description: Functions that could be added to Data.Set.
+ Functions that could be added to Data.Set.
+ .
+  Author: David Fox
+  Upstream-Maintainer: David Fox <dsf@seereason.com>
+ .
+ This package contains the normal library files.
+
+Package: libghc-set-extra-prof
+Architecture: any
+Depends: ${haskell:Depends},
+         ${misc:Depends}
+Recommends: ${haskell:Recommends}
+Suggests: ${haskell:Suggests}
+Provides: ${haskell:Provides}
+Description: Functions that could be added to Data.Set.
+ Functions that could be added to Data.Set.
+ .
+  Author: David Fox
+  Upstream-Maintainer: David Fox <dsf@seereason.com>
+ .
+ This package contains the libraries compiled with profiling enabled.
+
+Package: libghc-set-extra-doc
+Architecture: all
+Section: doc
+Depends: ${haskell:Depends},
+         ${misc:Depends}
+Recommends: ${haskell:Recommends}
+Suggests: ${haskell:Suggests}
+Description: Functions that could be added to Data.Set.
+ Functions that could be added to Data.Set.
+ .
+  Author: David Fox
+  Upstream-Maintainer: David Fox <dsf@seereason.com>
+ .
+ This package contains the documentation files.

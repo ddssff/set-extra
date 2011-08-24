@@ -6,8 +6,12 @@ Build-Depends: debhelper (>= 7.0),
                haskell-devscripts (>= 0.8),
                cdbs,
                ghc,
-               ghc-prof
-Build-Depends-Indep: ghc-doc
+               ghc-prof,
+               libghc-mtl-prof,
+               libghc-syb-prof
+Build-Depends-Indep: ghc-doc,
+                     libghc-mtl-doc,
+                     libghc-syb-doc
 Standards-Version: 3.9.1
 Homepage: http://src.seereason.com/set-extra
 

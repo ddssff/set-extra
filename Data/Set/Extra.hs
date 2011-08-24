@@ -19,11 +19,14 @@ module Data.Set.Extra
     -- , anyM
     , groupBy
     , partitionM
+    , gFind
     ) where
 
 import qualified Control.Monad as List (mapM, filterM, foldM)
+import Control.Monad.State ()
 import qualified Data.Map as Map
 import Data.Set
+import Data.Set.ExtraG
 import qualified Data.List as List
 --import qualified Data.Maybe
 import Prelude hiding (mapM, all, any, map, filter, null, concatMap, and, or)

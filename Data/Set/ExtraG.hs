@@ -7,8 +7,8 @@ import Data.Generics hiding (GT)
 import Control.Monad.Reader
 import Data.Set (Set, fromList)
 
-gFind :: forall a. (Ord a, Typeable a, Data a) => a -> Set a
-gFind x = fromList (gFind' x :: [a])
+gFind :: forall a b. (Data a, Typeable b, Ord b) => a -> Set b
+gFind x = fromList (gFind' x :: [b])
 
 -- | @gFind a@ will extract any elements of type @b@ from
 -- @a@'s structure in accordance with the MonadPlus

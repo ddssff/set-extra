@@ -1,3 +1,9 @@
+haskell-set-extra (1.2) unstable; urgency=low
+
+  * Fix gFind.
+
+ -- David Fox <dsf@seereason.com>  Wed, 24 Aug 2011 22:29:50 -0700
+
 haskell-set-extra (1.1) unstable; urgency=low
 
   * Add gFind for sets.

@@ -1,6 +1,6 @@
 Source: haskell-set-extra
 Priority: extra
-Section: Data
+Section: haskell
 Maintainer: David Fox <dsf@seereason.com>
 Build-Depends: debhelper (>= 7.0),
                haskell-devscripts (>= 0.8),

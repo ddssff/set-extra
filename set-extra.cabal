@@ -8,7 +8,7 @@ Description:    Functions that could be added to Data.Set.
 Synopsis:       Functions that could be added to Data.Set.
 Maintainer:     David Fox <dsf@seereason.com>
 Homepage:       http://src.seereason.com/set-extra
-ghc-options:	-O2 -Wall -Werror
+ghc-options:	-O2 -Wall
 Exposed-modules: Data.Set.Extra, Data.Set.ExtraG
 Build-Depends: base, containers, mtl, syb
 Build-Type: Simple

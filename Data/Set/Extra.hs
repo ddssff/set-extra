@@ -85,6 +85,7 @@ fromSS = List.map toList . toList
 ssMapM :: (Monad m, Ord a, Ord b) => (a -> m b) -> Set (Set a) -> m (Set (Set b))
 ssMapM f s = List.mapM (List.mapM f) (fromSS s) >>= return . toSS
 
+-- | distrib {a, b, c} {d, e, f} -> {a+d, a+e, a+f, b+d, b+e, b+f, c+d, c+e, c+f}
 distrib :: Ord a => Set (Set a) -> Set (Set a) -> Set (Set a)
 distrib lss rss = flatten $ map (\ rs -> (map (\ ls -> union rs ls) lss)) rss
 

@@ -1,3 +1,9 @@
+haskell-set-extra (1.3.1) unstable; urgency=low
+
+  * Fix imports.
+
+ -- David Fox <dsf@seereason.com>  Fri, 24 May 2013 12:00:07 -0700
+
 haskell-set-extra (1.3) unstable; urgency=low
 
   * Add mapM_, unzip, mapMaybe.

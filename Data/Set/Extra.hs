@@ -1,24 +1,26 @@
 module Data.Set.Extra
     ( module Data.Set
-    , catMaybes 
+    , mapM
+    , mapM_
+    , filterM
+    , catMaybes
+    , mapMaybe
     , flatten
     , concatMap
-    , mapM
-    , filterM
     , concatMapM
     , any
     , all
-    , distrib
     , or
     , and
     , ss
-    , ssMapM
     , toSS
     , fromSS
+    , ssMapM
+    , distrib
     , cartesianProduct
-    -- , anyM
     , groupBy
     , partitionM
+    , unzip
     , gFind
     ) where
 
@@ -35,11 +37,17 @@ import Prelude hiding (mapM, all, any, map, filter, null, concatMap, and, or)
 mapM :: (Monad m, Ord b) => (a -> m b) -> Set a -> m (Set b)
 mapM f s = List.mapM f (toList s) >>= return . fromList
 
+mapM_ :: (Monad m, Ord b) => (a -> m b) -> Set a -> m ()
+mapM_ f s = List.mapM_ f (toList s)
+
 filterM :: (Ord a, Monad m) => (a -> m Bool) -> Set a -> m (Set a)
 filterM p s = List.filterM p (toList s) >>= return . fromList
 
 catMaybes :: Ord a => Set (Maybe a) -> Set a
 catMaybes sm = fold (\ mx s -> maybe s (`insert` s) mx) empty sm
+
+mapMaybe :: (a -> Maybe b) -> Set a -> Set b
+mapMaybe f s = catMaybes (Data.Set.map f s)
 
 flatten :: Ord a => Set (Set a) -> Set a
 flatten ss' = fold union empty ss'
@@ -99,3 +107,6 @@ partitionM :: (Monad m, Ord a) => (a -> m Bool) -> Set a -> m (Set a, Set a)
 partitionM p xs =
     List.foldM f (empty, empty) (toList xs)
     where f (ts, fs) x = p x >>= \ flag -> return $ if flag then (insert x ts, fs) else (ts, insert x fs)
+
+unzip :: Set (a, b) -> (Set a, Set b)
+unzip s = fold (\ (l, r) (ls, rs) -> (Set.insert l ls, Set.insert r rs))

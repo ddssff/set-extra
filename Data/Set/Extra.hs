@@ -26,6 +26,7 @@ module Data.Set.Extra
 
 import qualified Control.Monad as List (mapM, mapM_, filterM, foldM)
 import Control.Monad.State ()
+import qualified Data.Foldable as Foldable (all, any, and, or)
 import Data.Map as Map (Map, insertWith, empty)
 import Data.Set as Set
 import Data.Set.ExtraG
@@ -60,7 +61,7 @@ concatMapM :: (Monad m, Ord a, Ord b) => (a -> m (Set b)) -> Set a -> m (Set b)
 concatMapM f s = mapM f s >>= return . flatten
 
 any :: Ord a => (a -> Bool) -> Set a -> Bool
-any f s = not . Set.null . Set.filter id . map f $ s
+any = Foldable.any
 
 {-
 anyM :: Monad m => (a -> m (Maybe Bool)) -> Set a -> m (Maybe Bool)
@@ -71,13 +72,13 @@ anyM p s =
 -}
 
 all :: Ord a => (a -> Bool) -> Set a -> Bool
-all f s = not . Set.null . Set.filter not . map f $ s
+all = Foldable.all
 
 or :: Set Bool -> Bool
-or = any id
+or = Foldable.or
 
 and :: Set Bool -> Bool
-and = all id
+and = Foldable.and
 
 -- |Create a singleton set containing a singleton set of a.
 ss :: Ord a => a -> Set (Set a)

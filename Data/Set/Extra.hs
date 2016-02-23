@@ -19,6 +19,7 @@ module Data.Set.Extra
     , distrib
     , cartesianProduct
     , groupBy
+    , powerset
     , partitionM
     , unzip
     , gFind
@@ -103,6 +104,13 @@ cartesianProduct xs ys = flatten $ Set.map (\ x -> Set.map (\ y -> (x, y)) ys) x
 
 groupBy :: (Ord a, Ord b) => (a -> b) -> Set a -> Map.Map b (Set a)
 groupBy f xs = fold (\ x m -> Map.insertWith union (f x) (singleton x) m) Map.empty xs
+
+powerset :: Ord a => Set a -> Set (Set a)
+powerset s
+    | s == Set.empty = singleton Set.empty
+    | otherwise = Set.map (insert x) pxs `union` pxs
+        where (x, xs) = deleteFindMin s
+              pxs = powerset xs
 
 partitionM :: (Monad m, Ord a) => (a -> m Bool) -> Set a -> m (Set a, Set a)
 partitionM p xs =

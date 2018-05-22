@@ -1,3 +1,5 @@
+{-# LANGUAGE CPP #-}
+
 module Data.Set.Extra
     ( module Set
     , mapM
@@ -99,8 +101,10 @@ ssMapM f s = List.mapM (List.mapM f) (fromSS s) >>= return . toSS
 distrib :: Ord a => Set (Set a) -> Set (Set a) -> Set (Set a)
 distrib lss rss = flatten $ map (\ rs -> (map (\ ls -> union rs ls) lss)) rss
 
+#if !MIN_VERSION_containers(0,5,11)
 cartesianProduct :: (Ord a, Ord b) => Set a -> Set b -> Set (a, b)
 cartesianProduct xs ys = flatten $ Set.map (\ x -> Set.map (\ y -> (x, y)) ys) xs
+#endif
 
 groupBy :: (Ord a, Ord b) => (a -> b) -> Set a -> Map.Map b (Set a)
 groupBy f xs = fold (\ x m -> Map.insertWith union (f x) (singleton x) m) Map.empty xs

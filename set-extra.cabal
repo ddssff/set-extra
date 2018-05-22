@@ -12,6 +12,6 @@ Build-Type:     Simple
 cabal-version:  >= 1.2
 
 Library
-  ghc-options:	-O2 -Wall
+  ghc-options:	-O -Wall
   Exposed-modules: Data.Set.Extra, Data.Set.ExtraG
   Build-Depends: base < 5, containers, mtl, syb

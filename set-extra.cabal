@@ -9,9 +9,10 @@ Synopsis:       Functions that could be added to Data.Set.
 Maintainer:     David Fox <dsf@seereason.com>
 Homepage:       https://github.com/ddssff/set-extra
 Build-Type:     Simple
-cabal-version:  >= 1.2
+cabal-version:  >= 1.10
 
 Library
-  ghc-options:	-O -Wall
+  ghc-options: -Wall
   Exposed-modules: Data.Set.Extra, Data.Set.ExtraG
   Build-Depends: base < 5, containers, mtl, syb
+  Default-Language:   Haskell2010

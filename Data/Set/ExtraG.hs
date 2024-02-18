@@ -4,7 +4,7 @@ module Data.Set.ExtraG
     ) where
 
 import Data.Generics hiding (GT)
-import Control.Monad.Reader
+import Control.Monad (MonadPlus, msum)
 import Data.Set (Set, fromList)
 
 gFind :: forall a b. (Data a, Typeable b, Ord b) => a -> Set b
